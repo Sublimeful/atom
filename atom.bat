@@ -31,13 +31,13 @@
 ::ZQ0/vhVqMQ3MEVWAtB9wSA==
 ::Zg8zqx1/OA3MEVWAtB9wSA==
 ::dhA7pRFwIByZRRnk
-::Zh4grVQjdCyDJFiQ+08MKQ9bQUqHJG7a
+::Zh4grVQjdCyDJGyX8VAjFChBTgiLMW68E7kgzO3o5P6IsnEcQO0yNorD39Q=
 ::YB416Ek+ZG8=
 ::
 ::
 ::978f952a14a936cc963da21a135fa983
 @ECHO OFF
-mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --script=Atom.lua          ^
-    --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50    ^
-    --term-title="  ${playlist-pos-1}/${playlist-count}  Ω  ${media-title:Nothing is currently playing...}"  ^
+mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --script=Atom.lua --osd-level=0  ^
+    --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50          ^
+    --term-title="  ${playlist-pos-1}/${playlist-count}  Ω  ${media-title:Nothing is currently playing...}"        ^
     --term-playing-msg="Now playing: ${media-title}"

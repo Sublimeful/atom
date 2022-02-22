@@ -528,5 +528,23 @@ end
 
 -- UI Functions -->
 
+-- <-- Property Change Messages
+
+_volume_initial_change = false
+mp.observe_property("volume", "number", function(name, value)
+  if not _volume_initial_change then _volume_initial_change = true; return end
+
+  msg.info(string.format("Volume: %d%%", value))
+end)
+
+_playlist_pos_initial_change = false
+mp.observe_property("playlist-pos-1", "number", function(name, value)
+  if not _playlist_pos_initial_change then _playlist_pos_initial_change = true; return end
+
+  msg.info(string.format("Playlist Position: %d", value))
+end)
+
+-- Property Change Messages -->
+
 -- <-- Welcome Screen
 welcome_screen()
