@@ -1,6 +1,6 @@
 -- Creator: Sublimeful
 -- Project: Atom
--- Version: 1.6
+-- Version: 2.0
 
 -- <-- SmartCopyPaste
 
