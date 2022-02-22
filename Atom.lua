@@ -515,12 +515,14 @@ function welcome_screen()
   end
 
   msg.info("                                    Welcome to Atom!")
-  msg.info("                To start, paste a url in from a media link like Youtube!")
+  msg.info("                      To start, paste in a media link like Youtube!")
   msg.info("")
-  msg.info("                         Next/Previous Track: > or <")
-  msg.info("                              Volume Up/Down: Up/Down Arrow")
-  msg.info("                        Seek Forward/Back 5s: Right/Left Arrow")
-  msg.info("                            Shuffle Playlist: Shift+S")
+  msg.info("                                   Pause/Play: Space")
+  msg.info("                               Volume Up/Down: Up/Down Arrow")
+  msg.info("                         Seek Forward/Back 5s: Right/Left Arrow")
+  msg.info("                          Next/Previous Track: </>")
+  msg.info("                        Jump to Beginning/End: 0/$")
+  msg.info("                             Shuffle Playlist: Shift+S")
   msg.info("")
 end
 
