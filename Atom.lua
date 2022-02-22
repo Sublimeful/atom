@@ -514,7 +514,6 @@ function welcome_screen()
     msg.info(v)
   end
 
-  msg.info("")
   msg.info("                                    Welcome to Atom!")
   msg.info("                To start, paste a url in from a media link like Youtube!")
   msg.info("")
@@ -522,6 +521,7 @@ function welcome_screen()
   msg.info("                              Volume Up/Down: Up/Down Arrow")
   msg.info("                        Seek Forward/Back 5s: Right/Left Arrow")
   msg.info("                            Shuffle Playlist: Shift+S")
+  msg.info("")
 end
 
 -- UI Functions -->
