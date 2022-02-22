@@ -557,7 +557,7 @@ function update_status_line()
 
     -- Buffering
     mp.commandv("run", "clear")
-    mp.add_timeout(0.13, function()
+    mp.add_timeout(0.15, function()
       print_logo_small()
       msg.info("Buffering...")
     end)
@@ -631,7 +631,7 @@ function update_status_line()
 
   -- Clear and set the new status line
   mp.commandv("run", "clear")
-  mp.add_timeout(0.13, function()
+  mp.add_timeout(0.15, function()
     -- Title of currently playing media
     local title = mp.get_property("media-title")
 
@@ -653,7 +653,7 @@ function on_pause_change(name, value)
   else
     timer:stop()
   end
-  mp.add_timeout(0.13, update_status_line)
+  mp.add_timeout(0.15, update_status_line)
 end
 mp.observe_property("pause", "bool", on_pause_change)
 mp.register_event("seek", update_status_line)
