@@ -38,5 +38,7 @@
 ::
 ::978f952a14a936cc963da21a135fa983
 @ECHO OFF
-mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --quiet            ^
-    --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --script=Atom.lua
+mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --script=Atom.lua          ^
+    --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50    ^
+    --term-title="  ${playlist-pos-1}/${playlist-count}  Ω  ${media-title:Nothing is currently playing...}"  ^
+    --term-playing-msg="Now playing: ${media-title}"

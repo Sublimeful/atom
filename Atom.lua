@@ -485,14 +485,14 @@ end
 -- <-- UI Functions
 -- <-- File Functions
 
--- see if the file exists
+-- Check if the file exists
 function file_exists(file)
   local f = io.open(file, "rb")
   if f then f:close() end
   return f ~= nil
 end
 
--- get all lines from a file, returns an empty
+-- Get all lines from a file, returns an empty
 -- list/table if the file does not exist
 function lines_from(file)
   if not file_exists(file) then return {} end
@@ -505,7 +505,7 @@ end
 
 -- File Functions -->
 
-function print_welcome_screen()
+function welcome_screen()
   local file = 'logo.txt'
   local lines = lines_from(file)
 
@@ -516,7 +516,7 @@ function print_welcome_screen()
 
   msg.info("")
   msg.info("                                    Welcome to Atom!")
-  msg.info("                To start, paste in a url from a media link like Youtube!")
+  msg.info("                To start, paste a url in from a media link like Youtube!")
   msg.info("")
   msg.info("                         Next/Previous Track: > or <")
   msg.info("                              Volume Up/Down: Up/Down Arrow")
@@ -524,141 +524,7 @@ function print_welcome_screen()
   msg.info("                            Shuffle Playlist: Shift+S")
 end
 
-function print_logo_small()
-  local file = 'logo_small.txt'
-  local lines = lines_from(file)
-
-  -- Print logo
-  for k, v in pairs(lines) do
-    msg.info(v)
-  end
-end
-
 -- UI Functions -->
-  
--- <-- Better Status Line
-
--- Rebuild the terminal status line as a lua script
--- Be aware that this will require more cpu power!
--- Also, this is based on a rather old version of the
--- builtin mpv status line.
-
--- Add a string to the status line
-function atsl(s)
-  newStatus = newStatus .. s
-end
-
-function update_status_line()
-  -- Do not display status line if nothing is playing
-  if not mp.get_property_bool("seekable") then
-    -- Still in welcome screen, so do not show buffering screen
-    local playlist_len = mp.get_property_number("playlist-count")
-    if playlist_len == 0 then return end
-
-    -- Buffering
-    mp.commandv("run", "clear")
-    mp.add_timeout(0.25, function()
-      print_logo_small()
-      msg.info("Buffering...")
-    end)
-    return
-  end
-  
-  -- Reset the status line
-  newStatus = ""
-
-  if mp.get_property_bool("pause") then
-    atsl("(Paused) ")
-  elseif mp.get_property_bool("paused-for-cache") then
-    atsl("(Buffering) ")
-  end
-
-  if mp.get_property("aid") ~= "no" then
-    atsl("A")
-  end
-  if mp.get_property("vid") ~= "no" then
-    atsl("V")
-  end
-
-  atsl(": ")
-
-  atsl(mp.get_property_osd("time-pos"))
-
-  atsl(" / ");
-  atsl(mp.get_property_osd("duration"));
-
-  atsl(" (")
-  atsl(mp.get_property_osd("percent-pos", -1))
-  atsl("%)")
-
-  local r = mp.get_property_number("speed", -1)
-  if r ~= 1 then
-    atsl(string.format(" x%4.2f", r))
-  end
-
-  r = mp.get_property_number("avsync", nil)
-  if r ~= nil then
-    atsl(string.format(" A-V: %f", r))
-  end
-
-  r = mp.get_property("total-avsync-change", 0)
-  if math.abs(r) > 0.05 then
-    atsl(string.format(" ct:%7.3f", r))
-  end
-
-  r = mp.get_property_number("decoder-drop-frame-count", -1)
-  if r > 0 then
-    atsl(" Late: ")
-    atsl(r)
-  end
-
-  r = mp.get_property_osd("video-bitrate")
-  if r ~= nil and r ~= "" then
-    atsl(" Vb: ")
-    atsl(r)
-  end
-
-  r = mp.get_property_osd("audio-bitrate")
-  if r ~= nil and r ~= "" then
-    atsl(" Ab: ")
-    atsl(r)
-  end
-
-  r = mp.get_property_number("cache", 0)
-  if r > 0 then
-    atsl(string.format(" Cache: %d%% ", r))
-  end
-
-  -- Clear and set the new status line
-  mp.commandv("run", "clear")
-  mp.add_timeout(0.25, function()
-    -- Title of currently playing media
-    local title = mp.get_property("media-title")
-
-    -- Current playlist info
-    local playlist_pos = mp.get_property_number("playlist-pos")
-    local playlist_len = mp.get_property_number("playlist-count")
-
-    print_logo_small()
-    msg.info(string.format("Now playing: %s (%d/%d)", title, playlist_pos + 1, playlist_len))
-    msg.info(newStatus)
-  end)
-end
-
-timer = mp.add_periodic_timer(1, update_status_line)
-
-function on_pause_change(name, value)
-  if value == false then
-    timer:resume()
-  else
-    timer:stop()
-  end
-  mp.add_timeout(0.25, update_status_line)
-end
-mp.observe_property("pause", "bool", on_pause_change)
-mp.register_event("seek", update_status_line)
-
--- Better Status Line -->
 
 -- <-- Welcome Screen
-print_welcome_screen()
+welcome_screen()
