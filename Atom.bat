@@ -1,6 +1,5 @@
 ::[Bat To Exe Converter]
 ::
-::fBE1pAF6MU+EWHreyHcjLQlHcDeXPmezC7Aa/eTHy++UqVkSRN4+bIDW5pWaL+1d6ETwFQ==
 ::fBE1pAF6MU+EWHreyHcjLQlHcDeXPmezC7Aa/eTHy++UqVkSRN4+bIDW5pWaL+1d5lDlFQ==
 ::fBE1pAF6MU+EWHreyHcjLQlHcDeXPmezC7Aa/eTHy++UqVkSRN4+bIDW5riBJ+9d/l3wFQ==
 ::fBE1pAF6MU+EWHreyHcjLQlHcDeXPmezC7Aa/eTHy++UqVkSRN4+bIDW5rmeNq4Q5UiE
@@ -38,7 +37,6 @@
 ::
 ::978f952a14a936cc963da21a135fa983
 @ECHO OFF
-
 mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --script=Atom.lua --osd-level=0             ^
     --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50                     ^
     --term-title="   ${playlist-pos-1}/${playlist-count}   Ω   ${media-title:Nothing is currently playing...}"                ^
