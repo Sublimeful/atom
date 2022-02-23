@@ -41,5 +41,5 @@ mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=n
     --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50                     ^
     --term-title="   ${playlist-pos-1}/${playlist-count}   Ω   ${media-title:Nothing is currently playing...}"                ^
     --term-playing-msg="Now playing: ${media-title}"                                                                          ^
-    --term-status-msg="${?pause==yes:(Paused) }${time-pos} / ${duration} (${percent-pos}%%) | VOL:${volume}%% | ${speed}x |"  ^
+    --term-status-msg="${?pause==yes:(Paused) }${time-pos} / ${duration} (${percent-pos}%%) | VOL: ${volume}%% | ${speed}x |"  ^
     --term-osd-bar --term-osd-bar-chars="[== ]"
