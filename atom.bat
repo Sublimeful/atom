@@ -37,7 +37,9 @@
 ::
 ::978f952a14a936cc963da21a135fa983
 @ECHO OFF
-mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --script=Atom.lua --osd-level=0  ^
-    --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50          ^
-    --term-title="  ${playlist-pos-1}/${playlist-count}  Ω  ${media-title:Nothing is currently playing...}"        ^
-    --term-playing-msg="Now playing: ${media-title}"
+mpv --idle --load-scripts=no --no-video --no-resume-playback --keep-open-pause=no --script=Atom.lua --osd-level=0             ^
+    --config-dir=configs --msg-time --msg-module --msg-level=cplayer=no,ffmpeg=no --cache=yes --volume=50                     ^
+    --term-title="  ${playlist-pos-1}/${playlist-count}  Ω  ${media-title:Nothing is currently playing...}"                   ^
+    --term-playing-msg="Now playing: ${media-title}"                                                                          ^
+    --term-status-msg="${?pause==yes:(Paused) }${time-pos} / ${duration} (${percent-pos}%%) | VOL:${volume}%% | ${speed}x |"  ^
+    --term-osd-bar --term-osd-bar-chars="[.█.]"

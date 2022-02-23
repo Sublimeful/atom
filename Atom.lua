@@ -528,16 +528,5 @@ end
 
 -- UI Functions -->
 
--- <-- Property Change Messages
-
-_volume_initial_change = false
-mp.observe_property("volume", "number", function(name, value)
-  if not _volume_initial_change then _volume_initial_change = true; return end
-
-  msg.info(string.format("Volume: %d%%", value))
-end)
-
--- Property Change Messages -->
-
 -- <-- Welcome Screen
 welcome_screen()
