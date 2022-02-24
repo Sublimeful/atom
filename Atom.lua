@@ -523,6 +523,7 @@ function welcome_screen()
   msg.info("                          Track Previous/Next: </>")
   msg.info("                        Jump to Beginning/End: 0/$")
   msg.info("                             Shuffle Playlist: Shift+S")
+  msg.info("                         Delete Current Track: Shift+D")
   msg.info("")
 end
 
